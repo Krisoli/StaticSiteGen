@@ -65,7 +65,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-'''
+''''''
 import os
 import shutil
 import sys
@@ -109,7 +109,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-
+'''
     
 import os
 import shutil
@@ -118,25 +118,22 @@ from copystatic import copy_files_recursive
 from gencontent import generate_pages_recursive
 
 dir_path_static = "./static"
-dir_path_docs = "./docs" # Endret fra public til docs for GitHub Pages
+dir_path_docs = "./docs" 
 
 def main():
-    # 1. Hent basepath fra CLI-argumenter, default til "/"
+    # Hent basepath fra CLI, ellers bruk "/"
     basepath = "/"
     if len(sys.argv) > 1:
         basepath = sys.argv[1]
 
-    # Slett docs-mappen for en ren start
     if os.path.exists(dir_path_docs):
         print(f"Sletter eksisterende {dir_path_docs}...")
         shutil.rmtree(dir_path_docs)
 
-    # Kopier statiske filer til docs-mappen
-    print(f"Kopierer statiske filer fra {dir_path_static} til {dir_path_docs}...")
+    print(f"Kopierer statiske filer til {dir_path_docs}...")
     copy_files_recursive(dir_path_static, dir_path_docs)
 
-    # Generer alle sider rekursivt med den valgte basepathen
-    print(f"Starter rekursiv generering med basepath: '{basepath}'...")
+    print(f"Starter generering med basepath: '{basepath}'...")
     generate_pages_recursive(
         "./content", 
         "template.html", 
